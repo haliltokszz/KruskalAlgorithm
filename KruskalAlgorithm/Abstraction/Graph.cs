@@ -1,11 +1,11 @@
-﻿using KruskalAlgorithm.Abstraction;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KruskalAlgorithm.Concrete
+namespace KruskalAlgorithm.Abstraction
 {
     abstract class Graph
     {

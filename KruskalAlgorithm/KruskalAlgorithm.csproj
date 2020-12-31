@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\Graph.cs" />
+    <Compile Include="Abstraction\Graph.cs" />
     <Compile Include="Abstraction\Edge.cs" />
     <Compile Include="Abstraction\Vertex.cs" />
     <Compile Include="Concrete\Kruskal.cs" />

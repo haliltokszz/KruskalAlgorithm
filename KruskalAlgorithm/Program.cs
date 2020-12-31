@@ -41,7 +41,7 @@ namespace KruskalAlgorithm
 
             Console.ReadKey();
         }
-    }
+    }//Halil Toksöz 180601020
 }
 
 
