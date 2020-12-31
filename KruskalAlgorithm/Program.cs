@@ -14,7 +14,6 @@ namespace KruskalAlgorithm
         {
             Kruskal graph = new Kruskal();
             int numEdges, numVertices=0;
-
             try
             {
                 StreamReader sr = new StreamReader(@"C:\Users\Monster-Halil\source\repos\KruskalAlgorithm\KruskalAlgorithm\inputs.txt");
@@ -36,7 +35,9 @@ namespace KruskalAlgorithm
             }
             graph.SortGraph();
             graph.Write();
-            Console.WriteLine("----------MST----------");
+            Console.WriteLine();
+            Console.WriteLine("----------------------------- Kruskal Minimum Spanning Tree -----------------------------");
+            Console.WriteLine();
             graph.MST(numVertices);
 
             Console.ReadKey();

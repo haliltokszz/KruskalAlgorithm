@@ -34,6 +34,7 @@ namespace KruskalAlgorithm.Abstraction
             }
 
             edge.GetFromVertex().AddSubset(edge.GetToVertex());
+            edge.GetToVertex().AddSubset(edge.GetFromVertex());
             //edge.From.AddSubset(To);
             edges.Add(edge);
         }
@@ -62,11 +63,17 @@ namespace KruskalAlgorithm.Abstraction
                 Console.Write(edge.GetFromVertexName());
                 Console.Write(" -> "+edge.GetToVertexName());
                 Console.Write(" : " + edge.GetWeight().ToString());
-                Console.Write(" Subsets: ");
-                List<Vertex> subsets = edge.GetFromVertex().GetSubsets();
-                foreach (Vertex subset in subsets)
+                Console.Write(" --- From Vertex: "+ edge.GetFromVertexName() +" Neighbours: ");
+                List<Vertex> fromSubsets = edge.GetFromVertex().GetSubsets();
+                List<Vertex> toSubsets = edge.GetToVertex().GetSubsets();
+                foreach (Vertex subset in fromSubsets)
                 {
                     Console.Write(subset.GetName().ToString()+" ");
+                }
+                Console.Write(" --- To Vertex: " + edge.GetToVertexName() + " Neighbours: ");
+                foreach (Vertex subset in toSubsets)
+                {
+                    Console.Write(subset.GetName().ToString() + " ");
                 }
                 Console.WriteLine();
             }
