@@ -16,7 +16,7 @@ namespace KruskalAlgorithm
             int numEdges, numVertices=0;
             try
             {
-                StreamReader sr = new StreamReader(@"C:\Users\Monster-Halil\source\repos\KruskalAlgorithm\KruskalAlgorithm\inputs.txt");
+                StreamReader sr = new StreamReader("inputs.txt");
                 string veri = sr.ReadToEnd();
                 veri = veri.Replace("\r\n", " ");
                 string[] veriler = veri.Split(' ');
