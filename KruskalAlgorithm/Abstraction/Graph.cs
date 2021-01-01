@@ -14,28 +14,15 @@ namespace KruskalAlgorithm.Abstraction
         public void AddEdge(int fromName, int toName, int weight)
         {
             Edge edge;
-            if(GetVertex(fromName)!=null && GetVertex(toName) != null)
+            Vertex toVertex = GetVertex(toName);
+            Vertex fromVertex = GetVertex(fromName);
+            if (fromVertex == null && toVertex == null)
             {
-                edge = new Edge(GetVertex(fromName), GetVertex(toName), weight);
-            }else if (GetVertex(fromName) != null)
-            {
-                Vertex toVertex = new Vertex(toName);
-                edge = new Edge(GetVertex(fromName), toVertex, weight);
-            }else if (GetVertex(toName) != null)
-            {
-                Vertex fromVertex = new Vertex(fromName);
-                edge = new Edge(fromVertex, GetVertex(toName), weight);
-            }
-            else
-            {
-                Vertex toVertex = new Vertex(toName);
-                Vertex fromVertex = new Vertex(fromName);
-                edge = new Edge(fromVertex, toVertex, weight);
-            }
-
-            edge.GetFromVertex().AddSubset(edge.GetToVertex());
-            edge.GetToVertex().AddSubset(edge.GetFromVertex());
-            //edge.From.AddSubset(To);
+                toVertex = new Vertex(toName);
+                fromVertex = new Vertex(fromName);
+            }else if (fromVertex == null) fromVertex = new Vertex(fromName);
+            else if (toVertex == null) toVertex = new Vertex(toName);
+            edge = new Edge(fromVertex, toVertex, weight);
             edges.Add(edge);
         }
 
@@ -88,20 +75,5 @@ namespace KruskalAlgorithm.Abstraction
         {
             return this.edges;
         }
-
-        /*public List<Vertex> GetSubsets(int vertexName)
-        {
-            Vertex vertex;
-            
-            return vertex.GetSubsets();
-        }*/
-
-        /*void AddVertex(int name, bool from)
-        {
-            if (from)
-                vertexFrom.Name = name;
-            else
-                vertexTo.Name = name;
-        }*/
     }
 }
