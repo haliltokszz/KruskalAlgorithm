@@ -16,6 +16,17 @@ namespace KruskalAlgorithm.Concrete
         {
             Vertex from = edge.GetFromVertex();
             Vertex to = edge.GetToVertex();
+            if (from.GetVisited() != 0 && to.GetVisited() != 0) //Farklı gruptalarsa..
+            {
+                if (from.GetVisited() == to.GetVisited()) return false;
+            }
+            return true;
+        }
+
+        public void SetCycle(Edge edge)
+        {
+            Vertex from = edge.GetFromVertex();
+            Vertex to = edge.GetToVertex();
             //Console.WriteLine("-Before-From Name: " + from.GetName() + " Group: " + from.GetVisited() + " |To Name: " + to.GetName() + " Group: " + to.GetVisited());
             if (from.GetVisited() == 0 && to.GetVisited() == 0)
             {
@@ -32,8 +43,7 @@ namespace KruskalAlgorithm.Concrete
             }
             else if (from.GetVisited() != 0 && to.GetVisited() != 0) //Farklı gruptalarsa..
             {
-                if (from.GetVisited() == to.GetVisited()) return false;
-                else
+                if (from.GetVisited() != to.GetVisited())
                 {
                     int tempGroup = from.GetVisited();
                     foreach (Edge e in this.GetEdges())
@@ -42,11 +52,10 @@ namespace KruskalAlgorithm.Concrete
                         else if (e.GetToVertex().GetVisited() == tempGroup) e.GetToVertex().SetVisited(to.GetVisited());
                     }//Tüm edgelerde değişimi yaptık
                 }
-                
+
 
             }
             //Console.WriteLine("-After-From Name: "+from.GetName()+" Group: "+from.GetVisited()+" |To Name: "+ to.GetName()+" Group: "+to.GetVisited());
-            return true;
         }
 
         public void MinimumCost(Edge edge)
@@ -62,6 +71,7 @@ namespace KruskalAlgorithm.Concrete
                 if (cycle)
                 {
                     graphMST.AddEdge(edge);
+                    SetCycle(edge);
                     MinimumCost(edge);
                 }
             }
