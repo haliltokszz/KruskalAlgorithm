@@ -11,6 +11,7 @@ namespace KruskalAlgorithm.Abstraction
         private int Name { get; set; }
         private int VisitedNo { get; set; }
         private List<Vertex> subsets { get; set; } = new List<Vertex>();
+        
 
         public Vertex(int name)
         {
